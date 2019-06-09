@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stddef.h>
 #define MAX_HOSTELERS 100
 
 
-// struct Student To Store hostelers' details like student ID, name, gender, room details, amount due,
-// payment made and other relevant details.
+
 struct Student
 {
     int studentId;
@@ -32,7 +30,7 @@ struct Block
 } A1, A2, A3, A4;
 
 
-// Function to intialise blocks A1, A2, A3, A4 with their respective values and data.
+
 void initializeBlocks()
 {
     strcpy(A1.name, "A1");
@@ -68,7 +66,6 @@ void initializeBlocks()
     A4.count = 0;
 }
 
-// function to get the room type by asking from the user
 int getRoomType()
 {
 
@@ -141,17 +138,12 @@ int validId(int id)
 
 }
 
-// function to  book room by asking the relevant details and room type
 void bookRoom()
 {
     struct Student temp;
     printf("Enter hosteler's Id : ");
     int id;
     scanf("%d", &id);
-    // Checking if id entered by user already exists.
-    // We will call function validId, to check id entered by user is valid or not.
-    // validId function return 1 if id is valid and not used before.
-    // validId function return 0 if id already exists.
     if(validId(id) == 0)
     {
         printf("\nThis id already exists. Try again with different id. \n");
@@ -255,7 +247,6 @@ void bookRoom()
 
 }
 
-// Function to Check room availability by type and gender in each block.
 void checkRoomAvailability()
 {
     int gender;
@@ -309,7 +300,6 @@ void checkRoomAvailability()
     }
 }
 
-// get hosteler or student by asking the id
 struct Student getHostelerById()
 {
     printf("Enter hosteler's Id : ");
@@ -350,16 +340,13 @@ struct Student getHostelerById()
 
     }
 
-    //return NULL;
+
 }
 
 
-// To get Bill based on number of weeks of booked by hosteler
 void getBill()
 {
     struct Student temp = getHostelerById();
-    // if There is no such hosteler with this Id then we get garbage values in temp and temp.studentId
-    // which is generally very large numbers
     if(temp.studentId >= 1000000)
     {
         printf("There is no such hosteler with this Id.");
@@ -368,12 +355,9 @@ void getBill()
     printf("\nThe bill for this student is %d \n", temp.amountDue);
 }
 
-// Function to Print total amount receivable and total payment received.
 void getAmountReceivableAndPaymentReceived()
 {
     struct Student temp = getHostelerById();
-    // if There is no such hosteler with this Id then we get garbage values in temp and temp.studentId
-    // which is generally very large numbers
     if(temp.studentId >= 1000000)
     {
         printf("There is no such hosteler with this Id.");
@@ -383,12 +367,9 @@ void getAmountReceivableAndPaymentReceived()
     printf("\nTotal payment received: %d \n", temp.amountReceived);
 }
 
-// function to Search hosteler's room detail by asking the id
 void searchHostelerDetails()
 {
     struct Student temp = getHostelerById();
-    // if There is no such hosteler with this Id then we get garbage values in temp and temp.studentId
-    // which is generally very large numbers
     if(temp.studentId >= 1000000)
     {
         printf("There is no such hosteler with this Id.");
@@ -401,7 +382,7 @@ void searchHostelerDetails()
     printf("\nThe bill for this student is %d \n", temp.amountDue);
 }
 
-// function to provide payment facility
+
 void makePayment()
 {
     printf("Enter Payment Amount : ");
@@ -453,7 +434,6 @@ void makePayment()
     printf("Payment has been successfully made \n");
 }
 
-// To Print amount receivable from each hosteler either by block or room type.
 void getDetailsByRoomType()
 {
     int roomType = getRoomType();
@@ -497,7 +477,6 @@ void getDetailsByRoomType()
     }
 }
 
-// To print menu and call functions
 void menu()
 {
     initializeBlocks();
@@ -572,7 +551,7 @@ void menu()
 
 int main()
 {
-    printf("Welcome to Hostel Booking Management!\n\n");
+    printf("Welcome!\n\n");
     menu();
     return 0;
 }
